@@ -1,0 +1,20 @@
+	private int GetProjectedIndex(Vector2Int direction)
+        {
+            int length = GridConstants.GRID_LENGTH;
+            int width = GridConstants.GRID_SIZE;
+            int index = _index;
+            int x = _index % width;
+
+            int xGoal = x - direction.x;
+
+            if (xGoal < 0 || xGoal > width - 1)
+                return -1;
+
+            index += direction.x;
+            index -= direction.y * width;
+
+            if (index < 0 || index > length - 1)
+                return -1;
+
+            return index;
+        }
